@@ -9,9 +9,10 @@ import axios from "axios";
 import ReactDOM from "react-dom/client";
 import LoginPage from "../pages/LoginPage.jsx";
 import App from "./app.jsx";
+import WelcomePage from "../pages/WelcomePage.jsx";
 
 const router = createBrowserRouter(
-  createRoutesFromElements(<Route index element={<LoginPage />}></Route>)
+  createRoutesFromElements(<Route path="/" element={<LoginPage />}></Route>)
 );
 
 ReactDOM.createRoot(document.getElementById("root")).render(
