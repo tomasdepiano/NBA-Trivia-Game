@@ -4,7 +4,7 @@ import morgan from "morgan";
 import ViteExpress from "vite-express";
 
 const app = express();
-const port = "8444";
+const port = "5444";
 ViteExpress.config({ printViteDevServerHost: true });
 
 app.use(morgan("dev"));

@@ -12,7 +12,11 @@ import App from "./app.jsx";
 import WelcomePage from "../pages/WelcomePage.jsx";
 
 const router = createBrowserRouter(
-  createRoutesFromElements(<Route path="/" element={<LoginPage />}></Route>)
+  createRoutesFromElements(
+    <Route path="/" element={<LoginPage />}>
+      <Route path="/welcome" element={<WelcomePage />} />
+    </Route>
+  )
 );
 
 ReactDOM.createRoot(document.getElementById("root")).render(
