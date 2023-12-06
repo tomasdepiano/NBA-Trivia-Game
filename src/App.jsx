@@ -1,5 +1,5 @@
-function App() {
-  return <>Hello From App</>;
-}
+import LoginPage from "../pages/LoginPage";
 
-export default App;
+export default function App() {
+  return <>{<LoginPage />}</>;
+}

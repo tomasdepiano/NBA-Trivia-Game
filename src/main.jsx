@@ -8,12 +8,12 @@ import React from "react";
 import axios from "axios";
 import ReactDOM from "react-dom/client";
 import LoginPage from "../pages/LoginPage.jsx";
-import App from "./app.jsx";
 import WelcomePage from "../pages/WelcomePage.jsx";
+import App from "./app.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<LoginPage />}>
+    <Route path="/" element={<App />}>
       <Route path="/welcome" element={<WelcomePage />} />
     </Route>
   )

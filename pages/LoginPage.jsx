@@ -19,7 +19,13 @@ export default function LoginPage() {
               Password:
               <input type="text" name="password" />
             </label>
-            <input type="submit" value="Submit" />
+            <input
+              type="submit"
+              value="Submit"
+              onClick={(e) => {
+                e.preventDefault();
+              }}
+            />
           </form>
           <button>Create an Account</button>
         </>
