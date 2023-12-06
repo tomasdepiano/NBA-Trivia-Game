@@ -30,7 +30,7 @@ export default function LoginPage() {
               setOpenModal(true);
             }}
           >
-            Open
+            Create an Account
           </button>
           {openModal && <Modal closeModal={setOpenModal} />}
         </>
