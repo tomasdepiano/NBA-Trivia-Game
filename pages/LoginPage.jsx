@@ -1,9 +1,13 @@
 import { Outlet } from "react-router-dom";
+import Modal from "../src/components/CreateAccountModal.jsx";
+import { useState } from "react";
 
 export default function LoginPage() {
   const path = window.location.pathname;
 
   const isHome = path === "/" ? true : false;
+
+  const [openModal, setOpenModal] = useState(false);
 
   return (
     <>
@@ -11,23 +15,24 @@ export default function LoginPage() {
         <>
           <div>Please Log Into Your Account</div>
           <form>
-            <label>
+            <div>
               Email:
               <input type="text" name="email" />
-            </label>
-            <label>
+            </div>
+            <div>
               Password:
               <input type="text" name="password" />
-            </label>
-            <input
-              type="submit"
-              value="Submit"
-              onClick={(e) => {
-                e.preventDefault();
-              }}
-            />
+            </div>
           </form>
-          <button>Create an Account</button>
+          <button
+            className="openModalBtn"
+            onClick={() => {
+              setOpenModal(true);
+            }}
+          >
+            Open
+          </button>
+          {openModal && <Modal closeModal={setOpenModal} />}
         </>
       )}
       <Outlet />
