@@ -21,7 +21,7 @@ export default function LoginPage() {
             </div>
             <div>
               Password:
-              <input type="text" name="password" />
+              <input type="password" name="password" />
             </div>
           </form>
           <button
