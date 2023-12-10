@@ -33,11 +33,11 @@ function Modal({ closeModal }) {
           </div>
           <div>
             Password:
-            <input type="text" name="password" />
+            <input type="password" name="password" />
           </div>
         </div>
         <div className="footer">
-          <button>Continue</button>
+          <button>Create Account</button>
           <button
             onClick={() => {
               closeModal(false);
