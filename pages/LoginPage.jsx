@@ -9,12 +9,16 @@ export default function LoginPage() {
 
   const [openModal, setOpenModal] = useState(false);
 
+  function handleSubmit(e) {
+    e.preventDefault();
+  }
+
   return (
     <>
       {isHome && (
         <>
           <div>Please Log Into Your Account</div>
-          <form>
+          <form onSubmit={handleSubmit}>
             <div>
               Email:
               <input type="text" name="email" />
@@ -23,6 +27,7 @@ export default function LoginPage() {
               Password:
               <input type="password" name="password" />
             </div>
+            <button>Submit</button>
           </form>
           <button
             className="openModalBtn"

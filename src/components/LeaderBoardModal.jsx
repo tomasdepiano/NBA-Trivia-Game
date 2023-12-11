@@ -16,7 +16,7 @@ function LeaderBoardModal({ closeModal }) {
           </button>
         </div>
         <div className="title">
-          <h1>Here at the current Top 5 Players and Scores!</h1>
+          <h1>Here are the current Top 5 Players and Scores!</h1>
         </div>
         <div className="body"></div>
         <div className="footer">
