@@ -1,6 +1,6 @@
 import { DataTypes, Model } from "sequelize";
 import util from "util";
-import { db } from "../config/db,js";
+import { db } from "../config/db.js";
 
 export default class User extends Model {
   [util.inspect.custom]() {

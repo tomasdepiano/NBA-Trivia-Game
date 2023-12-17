@@ -1,0 +1,19 @@
+[
+  {
+    "userId": "1",
+    "fname": "Tomas",
+    "lname": "De Piano",
+    "email": "test@test.com",
+    "password": "test"
+  
+  }
+]
+[
+  {
+    "scoreId": "2",
+    "score": "26",
+    "timer": "2:00",
+    "userId": "1"
+}
+
+]
