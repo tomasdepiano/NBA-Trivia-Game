@@ -5,15 +5,12 @@
     "lname": "De Piano",
     "email": "test@test.com",
     "password": "test"
-  
-  }
-]
-[
+  },
   {
-    "scoreId": "2",
-    "score": "26",
-    "timer": "2:00",
-    "userId": "1"
-}
-
+    "userId": "2",
+    "fname": "Noemi",
+    "lname": "De Piano",
+    "email": "test2@test.com",
+    "password": "test"
+  }
 ]

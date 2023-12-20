@@ -10,22 +10,24 @@ await db.sync({ force: true });
 
 console.log("Seeding database...");
 
-console.log(TomasData);
+const usersInDB = await Promise.all(
+  TomasData.map((data) => {
+    const { userId, fname, lname, email, password, scoreId, score, timer } =
+      data;
 
-const { userId, fname, lname, email, password, scoreId, score, timer } =
-  TomasData[0];
+    const newUser = User.create({
+      userId: userId,
+      fname: fname,
+      lname: lname,
+      email: email,
+      password: password,
+      scoreId: scoreId,
+      score: score,
+      timer: timer,
+    });
 
-console.log(userId);
+    return newUser;
+  })
+);
 
-const newUser = await User.create({
-  userId: userId,
-  fname: fname,
-  lname: lname,
-  email: email,
-  password: password,
-  scoreId: scoreId,
-  score: score,
-  timer: timer,
-});
-
-console.log(newUser);
+console.log(usersInDB);
