@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import "./Modal.css";
+import { useNavigate } from "react-router-dom";
 
 function LeaderBoardModal({ closeModal }) {
+  const navigate = useNavigate();
+
+  const handleNewGame = () => {
+    navigate("/new-game");
+  };
+
   return (
     <div className="modalBackground">
       <div className="modalContainer">
@@ -20,7 +27,7 @@ function LeaderBoardModal({ closeModal }) {
         </div>
         <div className="body"></div>
         <div className="footer">
-          <button>Play New Game</button>
+          <button onClick={handleNewGame}>Play New Game</button>
           <button
             onClick={() => {
               closeModal(false);
