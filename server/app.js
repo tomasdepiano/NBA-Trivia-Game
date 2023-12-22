@@ -16,6 +16,28 @@ app.use(
   session({ secret: "ssshhhhh", saveUninitialized: true, resave: false })
 );
 
+app.post("/createAccount", async (req, res) => {
+  const { fname, lname, email, password } = req.body;
+  console.log(req.body);
+  const user = await User.findOne({ where: { email } });
+
+  if (user) {
+    res.json({ success: false, message: "Email already in use" });
+  } else {
+    User.create({
+      fname: fname,
+      lname: lname,
+      email: email,
+      password: password,
+    });
+    res.json({
+      success: true,
+      message: "Your account has been created, go back and login.",
+    });
+  }
+  console.log(user);
+});
+
 app.post("/auth", async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ where: { email: email } });

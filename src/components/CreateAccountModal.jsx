@@ -1,7 +1,24 @@
 import React, { useState } from "react";
 import "./Modal.css";
+import axios from "axios";
 
 function Modal({ closeModal }) {
+  const [fname, setFname] = useState("");
+  const [lname, setLname] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const clickCreateAccountButton = async () => {
+    const res = await axios.post("/createAccount", {
+      fname,
+      lname,
+      password,
+      email,
+    });
+
+    return alert(res.data.message);
+  };
+
   return (
     <div className="modalBackground">
       <div className="modalContainer">
@@ -21,23 +38,43 @@ function Modal({ closeModal }) {
         <div className="body">
           <div>
             First Name:
-            <input type="text" name="fname" />
+            <input
+              type="text"
+              name="fname"
+              onChange={(e) => setFname(e.target.value)}
+              value={fname}
+            />
           </div>
           <div>
             Last Name:
-            <input type="text" name="lname" />
+            <input
+              type="text"
+              name="lname"
+              onChange={(e) => setLname(e.target.value)}
+              value={lname}
+            />
           </div>
           <div>
             Email:
-            <input type="text" name="email" />
+            <input
+              type="text"
+              name="email"
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+            />
           </div>
           <div>
             Password:
-            <input type="password" name="password" />
+            <input
+              type="password"
+              name="password"
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+            />
           </div>
         </div>
         <div className="footer">
-          <button>Create Account</button>
+          <button onClick={clickCreateAccountButton}>Create Account</button>
           <button
             onClick={() => {
               closeModal(false);

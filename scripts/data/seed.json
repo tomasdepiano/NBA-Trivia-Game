@@ -1,13 +1,11 @@
 [
   {
-    "userId": "1",
     "fname": "Tomas",
     "lname": "De Piano",
     "email": "test@test.com",
     "password": "test"
   },
   {
-    "userId": "2",
     "fname": "Noemi",
     "lname": "De Piano",
     "email": "test2@test.com",
