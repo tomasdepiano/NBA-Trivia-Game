@@ -8,13 +8,16 @@ function Modal({ closeModal }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const clickCreateAccountButton = async () => {
+  const clickCreateAccountButton = async (e) => {
+    e.preventDefault();
     const res = await axios.post("/createAccount", {
       fname,
       lname,
       password,
       email,
     });
+
+    closeModal(false);
 
     return alert(res.data.message);
   };
@@ -35,26 +38,26 @@ function Modal({ closeModal }) {
         <div className="title">
           <h1>Lets create a new account!</h1>
         </div>
-        <div className="body">
-          <div>
-            First Name:
-            <input
-              type="text"
-              name="fname"
-              onChange={(e) => setFname(e.target.value)}
-              value={fname}
-            />
-          </div>
-          <div>
-            Last Name:
-            <input
-              type="text"
-              name="lname"
-              onChange={(e) => setLname(e.target.value)}
-              value={lname}
-            />
-          </div>
-          <form>
+        <form onSubmit={clickCreateAccountButton}>
+          <div className="body">
+            <div>
+              First Name:
+              <input
+                type="text"
+                name="fname"
+                onChange={(e) => setFname(e.target.value)}
+                value={fname}
+              />
+            </div>
+            <div>
+              Last Name:
+              <input
+                type="text"
+                name="lname"
+                onChange={(e) => setLname(e.target.value)}
+                value={lname}
+              />
+            </div>
             <div>
               Email:
               <input
@@ -65,28 +68,30 @@ function Modal({ closeModal }) {
                 required
               />
             </div>
-          </form>
-          <div>
-            Password:
-            <input
-              type="password"
-              name="password"
-              onChange={(e) => setPassword(e.target.value)}
-              value={password}
-            />
+
+            <div>
+              Password:
+              <input
+                type="password"
+                name="password"
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+              />
+            </div>
           </div>
-        </div>
-        <div className="footer">
-          <button onClick={clickCreateAccountButton}>Create Account</button>
-          <button
-            onClick={() => {
-              closeModal(false);
-            }}
-            id="cancelBtn"
-          >
-            Cancel
-          </button>
-        </div>
+
+          <div className="footer">
+            <button type="submit">Create Account</button>
+            <button
+              onClick={() => {
+                closeModal(false);
+              }}
+              id="cancelBtn"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );
