@@ -4,6 +4,7 @@ import morgan from "morgan";
 import ViteExpress from "vite-express";
 import User from "./models/User.model.js";
 import Score from "./models/Score.model.js";
+import { db } from "./config/db.js";
 
 const app = express();
 const port = "5444";
@@ -35,7 +36,12 @@ app.post("/createAccount", async (req, res) => {
       message: "Your account has been created, go back and login.",
     });
   }
-  console.log(user);
+});
+
+app.get("/data", async (req, res) => {
+  const data = await User.findAll();
+  console.log(data);
+  res.json(data);
 });
 
 app.post("/auth", async (req, res) => {

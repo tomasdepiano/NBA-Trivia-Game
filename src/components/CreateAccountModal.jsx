@@ -54,15 +54,18 @@ function Modal({ closeModal }) {
               value={lname}
             />
           </div>
-          <div>
-            Email:
-            <input
-              type="text"
-              name="email"
-              onChange={(e) => setEmail(e.target.value)}
-              value={email}
-            />
-          </div>
+          <form>
+            <div>
+              Email:
+              <input
+                type="email"
+                name="email"
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+                required
+              />
+            </div>
+          </form>
           <div>
             Password:
             <input

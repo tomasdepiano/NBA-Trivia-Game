@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import "./Modal.css";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-function LeaderBoardModal({ closeModal }) {
+function LeaderBoardModal({ closeModal, data }) {
   const navigate = useNavigate();
 
   const handleNewGame = () => {
@@ -25,7 +26,15 @@ function LeaderBoardModal({ closeModal }) {
         <div className="title">
           <h1>Here are the current Top 5 Players and Scores!</h1>
         </div>
-        <div className="body"></div>
+        <div className="body">
+          {data.map((player) => {
+            return (
+              <div key={player.userId}>
+                {player.fname} {player.lname}
+              </div>
+            );
+          })}
+        </div>
         <div className="footer">
           <button onClick={handleNewGame}>Play New Game</button>
           <button
