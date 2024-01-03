@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function WelcomePage() {
   const [openModal, setOpenModal] = useState(false);
-  const [data, setData] = useState();
+  const [data, setData] = useState([]);
 
   const navigate = useNavigate();
 
