@@ -11,12 +11,13 @@ import WelcomePage from "../pages/WelcomePage.jsx";
 import App from "./app.jsx";
 import NewGame from "../pages/NewGamePage.jsx";
 import Leaderboard from "../pages/LeaderBoardPage.jsx";
+import Quiz from "./components/Quiz/quiz.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route path="/welcome" element={<WelcomePage />} />
-      <Route path="/new-game" element={<NewGame />} />
+      <Route path="/new-game" element={<Quiz />} />
       <Route path="/leaderboard" element={<Leaderboard />} />
     </Route>
   )
