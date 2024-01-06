@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react";
 import "./Quiz.css";
 import { data } from "../../../scripts/quizdata";
+import { useNavigate } from "react-router-dom";
+import StopWatch from "./Stopwatch";
 
 export default function Quiz() {
   let [index, setIndex] = useState(0);
@@ -8,6 +10,12 @@ export default function Quiz() {
   const [lock, setLock] = useState(false);
   const [score, setScore] = useState(0);
   const [result, setResult] = useState(false);
+
+  const navigate = useNavigate();
+
+  function GoBackHome() {
+    navigate("/");
+  }
 
   const Option1 = useRef(null);
   const Option2 = useRef(null);
@@ -57,7 +65,8 @@ export default function Quiz() {
 
   return (
     <div className="container">
-      <h1>Quiz App</h1>
+      <div>{<StopWatch />}</div>
+      <h1>NBA Trivia Game</h1>
       <hr />
       {result ? (
         <></>
@@ -113,6 +122,7 @@ export default function Quiz() {
             You scored {score} out of {data.length}
           </h2>
           <button onClick={reset}>Reset</button>
+          <button onClick={GoBackHome}>Go back to Home Screen</button>
         </>
       ) : (
         <></>

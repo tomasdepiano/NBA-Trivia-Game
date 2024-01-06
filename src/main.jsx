@@ -9,7 +9,6 @@ import axios from "axios";
 import ReactDOM from "react-dom/client";
 import WelcomePage from "../pages/WelcomePage.jsx";
 import App from "./app.jsx";
-import NewGame from "../pages/NewGamePage.jsx";
 import Leaderboard from "../pages/LeaderBoardPage.jsx";
 import Quiz from "./components/Quiz/quiz.jsx";
 
