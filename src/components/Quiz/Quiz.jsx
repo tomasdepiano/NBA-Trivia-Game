@@ -10,11 +10,31 @@ export default function Quiz() {
   const [lock, setLock] = useState(false);
   const [score, setScore] = useState(0);
   const [result, setResult] = useState(false);
+  const [timeStarted, setTimeStarted] = useState(false);
+  const [timeStopped, setTimeStopped] = useState(false);
 
   const navigate = useNavigate();
 
   function GoBackHome() {
     navigate("/");
+  }
+
+  function startTime() {
+    if (!timeStarted) {
+      setTimeStarted(true);
+    }
+  }
+
+  function stopTime() {
+    if (!timeStopped) {
+      setTimeStopped(true);
+    }
+  }
+
+  function finalSubmit() {
+    if (index === data.length) {
+      <button>Submit your answers</button>;
+    }
   }
 
   const Option1 = useRef(null);
@@ -65,7 +85,9 @@ export default function Quiz() {
 
   return (
     <div className="container">
-      <div>{<StopWatch />}</div>
+      <div>
+        {<StopWatch timeStarted={timeStarted} timeStopped={timeStopped} />}
+      </div>
       <h1>NBA Trivia Game</h1>
       <hr />
       {result ? (
@@ -80,6 +102,7 @@ export default function Quiz() {
               ref={Option1}
               onClick={(e) => {
                 checkAns(e, 1);
+                startTime();
               }}
             >
               {question.option1}
@@ -88,6 +111,7 @@ export default function Quiz() {
               ref={Option2}
               onClick={(e) => {
                 checkAns(e, 2);
+                startTime();
               }}
             >
               {question.option2}
@@ -96,6 +120,7 @@ export default function Quiz() {
               ref={Option3}
               onClick={(e) => {
                 checkAns(e, 3);
+                startTime();
               }}
             >
               {question.option3}
@@ -104,11 +129,13 @@ export default function Quiz() {
               ref={Option4}
               onClick={(e) => {
                 checkAns(e, 4);
+                startTime();
               }}
             >
               {question.option4}
             </li>
           </ul>
+
           <button onClick={next}>Next</button>
           <div className="index">
             {index + 1} of {data.length} questions

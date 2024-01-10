@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
+import { useEffect } from "react";
 
-export default function Stopwatch() {
+export default function Stopwatch({ timeStarted, timeStopped }) {
   const [startTime, setStartTime] = useState(null);
   const [now, setNow] = useState(null);
   const intervalRef = useRef(null);
@@ -18,6 +19,20 @@ export default function Stopwatch() {
   function handleStop() {
     clearInterval(intervalRef.current);
   }
+
+  useEffect(() => {
+    if (timeStarted) {
+      handleStart();
+    }
+    return () => handleStop();
+  }, [timeStarted]);
+
+  useEffect(() => {
+    if (timeStopped) {
+      handleStop();
+    }
+    return () => handleStart();
+  }, [timeStopped]);
 
   let secondsPassed = 0;
   if (startTime != null && now != null) {
