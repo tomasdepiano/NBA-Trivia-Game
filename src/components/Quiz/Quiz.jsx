@@ -24,16 +24,12 @@ export default function Quiz() {
       setTimeStarted(true);
     }
   }
-
-  function stopTime() {
-    if (!timeStopped) {
-      setTimeStopped(true);
-    }
-  }
-
-  function finalSubmit() {
-    if (index === data.length) {
-      <button>Submit your answers</button>;
+  //save time, route to next page and stop time
+  function handleFinishQuiz() {
+    if (index === data.length - 1) {
+      if (!timeStopped) {
+        setTimeStopped(true);
+      }
     }
   }
 
@@ -135,8 +131,16 @@ export default function Quiz() {
               {question.option4}
             </li>
           </ul>
-
-          <button onClick={next}>Next</button>
+          <button
+            onClick={(e) => {
+              if (index === data.length - 1) {
+                return handleFinishQuiz();
+              }
+              next();
+            }}
+          >
+            {index === data.length - 1 ? "Finish Quiz" : "Next"}
+          </button>
           <div className="index">
             {index + 1} of {data.length} questions
           </div>
