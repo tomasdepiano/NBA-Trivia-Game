@@ -9,7 +9,6 @@ export default function Quiz({ userScore }) {
   let [index, setIndex] = useState(0);
   const [question, setQuestion] = useState(data[index]);
   const [lock, setLock] = useState(false);
-  // const [score, setScore] = useState(0);
   const [result, setResult] = useState(false);
   const [timeStarted, setTimeStarted] = useState(false);
   const [timeStopped, setTimeStopped] = useState(false);
@@ -25,10 +24,6 @@ export default function Quiz({ userScore }) {
 
   function GoToResultsPage() {
     navigate("/results");
-  }
-
-  function GoBackHome() {
-    navigate("/");
   }
 
   function startTime() {

@@ -90,6 +90,7 @@ export default function LoginPage() {
         context={{
           ContextScore: [score, setScore],
           Timer: [now, setNow],
+          Reset: [],
         }}
       />
     </>
