@@ -9,15 +9,16 @@ import axios from "axios";
 import ReactDOM from "react-dom/client";
 import WelcomePage from "../pages/WelcomePage.jsx";
 import App from "./app.jsx";
-import Leaderboard from "../pages/LeaderBoardPage.jsx";
+
 import Quiz from "./components/Quiz/quiz.jsx";
+import QuizResults from "../pages/Quizresults.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route path="/welcome" element={<WelcomePage />} />
       <Route path="/new-game" element={<Quiz />} />
-      <Route path="/leaderboard" element={<Leaderboard />} />
+      <Route path="/results" element={<QuizResults />} />
     </Route>
   )
 );

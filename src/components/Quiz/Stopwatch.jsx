@@ -1,10 +1,15 @@
 import { useState, useRef } from "react";
 import { useEffect } from "react";
+import { useOutletContext } from "react-router-dom";
 
 export default function Stopwatch({ timeStarted, timeStopped }) {
   const [startTime, setStartTime] = useState(null);
-  const [now, setNow] = useState(null);
+
   const intervalRef = useRef(null);
+
+  const { Timer } = useOutletContext();
+
+  const [now, setNow] = Timer;
 
   function handleStart() {
     setStartTime(Date.now());

@@ -1,19 +1,31 @@
 import React, { useRef, useState } from "react";
 import "./Quiz.css";
 import { data } from "../../../scripts/quizdata";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import StopWatch from "./Stopwatch";
+import QuizResults from "../../../pages/Quizresults";
 
-export default function Quiz() {
+export default function Quiz({ userScore }) {
   let [index, setIndex] = useState(0);
   const [question, setQuestion] = useState(data[index]);
   const [lock, setLock] = useState(false);
-  const [score, setScore] = useState(0);
+  // const [score, setScore] = useState(0);
   const [result, setResult] = useState(false);
   const [timeStarted, setTimeStarted] = useState(false);
   const [timeStopped, setTimeStopped] = useState(false);
 
+  // const doesthiswork = useOutletContext();
+  // console.log(doesthiswork);
+
+  const { ContextScore } = useOutletContext();
+
+  const [score, setScore] = ContextScore;
+
   const navigate = useNavigate();
+
+  function GoToResultsPage() {
+    navigate("/results");
+  }
 
   function GoBackHome() {
     navigate("/");
@@ -28,6 +40,7 @@ export default function Quiz() {
   function handleFinishQuiz() {
     if (index === data.length - 1) {
       if (!timeStopped) {
+        GoToResultsPage();
         setTimeStopped(true);
       }
     }

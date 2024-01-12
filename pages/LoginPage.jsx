@@ -17,6 +17,9 @@ export default function LoginPage() {
   const [openModal, setOpenModal] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [score, setScore] = useState(0);
+  const [now, setNow] = useState(null);
+
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -37,49 +40,58 @@ export default function LoginPage() {
       {isHome && (
         <>
           <Container fluid>
-            <div>Please Log Into Your Account</div>
+            <div class="mx-auto">Please Log Into Your Account</div>
             <Form>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address </Form.Label>
-                <Form.Control type="email" placeholder="Enter email" />
-                <Form.Text>
-                  We'll never share your email with anyone else.
-                </Form.Text>
                 <input
                   type="text"
                   name="email"
                   onChange={(e) => setEmail(e.target.value)}
                   value={email}
                 />
+                <Form.Text>
+                  We'll never share your email with anyone else.
+                </Form.Text>
               </Form.Group>
 
-              <div>
-                Password:
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>Password</Form.Label>
                 <input
                   type="password"
                   name="password"
                   onChange={(e) => setPassword(e.target.value)}
                   value={password}
                 />
-              </div>
+              </Form.Group>
 
-              <button type="submit" onClick={(e) => handleLogin(e)}>
+              <Button
+                variant="primary"
+                type="submit"
+                onClick={(e) => handleLogin(e)}
+              >
                 Submit
-              </button>
+              </Button>
             </Form>
-            <button
+            <Button
+              variant="primary"
               className="openModalBtn"
               onClick={() => {
                 setOpenModal(true);
               }}
             >
               Create an Account
-            </button>
+            </Button>
             {openModal && <Modal closeModal={setOpenModal} />}
           </Container>
         </>
       )}
-      <Outlet />
+      <Outlet
+        context={{
+          ContextScore: [score, setScore],
+          Timer: [now, setNow],
+        }}
+      />
     </>
   );
 }
