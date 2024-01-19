@@ -9,15 +9,18 @@ export default function Stopwatch({ timeStarted, timeStopped }) {
 
   const { Timer } = useOutletContext();
 
-  const [now, setNow] = Timer;
+  const [secondsPassed, setSecondsPassed] = Timer;
+
+  console.log(timeStopped);
 
   function handleStart() {
     setStartTime(Date.now());
-    setNow(Date.now());
 
     clearInterval(intervalRef.current);
     intervalRef.current = setInterval(() => {
-      setNow(Date.now());
+      if (startTime != null && secondsPassed != null) {
+        setSecondsPassed((Date.now() - startTime) / 1000);
+      }
     }, 10);
   }
 
@@ -29,6 +32,7 @@ export default function Stopwatch({ timeStarted, timeStopped }) {
     if (timeStarted) {
       handleStart();
     }
+
     return () => handleStop();
   }, [timeStarted]);
 
@@ -38,11 +42,6 @@ export default function Stopwatch({ timeStarted, timeStopped }) {
     }
     return () => handleStart();
   }, [timeStopped]);
-
-  let secondsPassed = 0;
-  if (startTime != null && now != null) {
-    secondsPassed = (now - startTime) / 1000;
-  }
 
   return (
     <>

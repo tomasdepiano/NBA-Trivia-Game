@@ -7,7 +7,6 @@ import "bootstrap/dist/css/bootstrap.css";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import InputGroup from "react-bootstrap/InputGroup";
 
 export default function LoginPage() {
   const path = window.location.pathname;
@@ -18,7 +17,7 @@ export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [score, setScore] = useState(0);
-  const [now, setNow] = useState(null);
+  const [secondsPassed, setSecondsPassed] = useState(0);
 
   const navigate = useNavigate();
 
@@ -63,6 +62,9 @@ export default function LoginPage() {
                   onChange={(e) => setPassword(e.target.value)}
                   value={password}
                 />
+                <Form.Text>
+                  We'll never share your password with anyone else.
+                </Form.Text>
               </Form.Group>
 
               <Button
@@ -89,8 +91,8 @@ export default function LoginPage() {
       <Outlet
         context={{
           ContextScore: [score, setScore],
-          Timer: [now, setNow],
-          Reset: [],
+          Timer: [secondsPassed, setSecondsPassed],
+          // UserId: [userId, setUserId],
         }}
       />
     </>

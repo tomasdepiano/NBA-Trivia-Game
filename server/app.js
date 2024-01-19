@@ -38,6 +38,20 @@ app.post("/createAccount", async (req, res) => {
   }
 });
 
+app.post("/scoreData", async (req, res) => {
+  const { scores, timer } = req.body;
+  console.log(req.session.userId);
+  console.log(req.body);
+  console.log(typeof timer);
+
+  await Score.create({
+    scores: scores,
+    timer: timer,
+    userId: req.session.userId,
+  });
+  res.json({ success: true });
+});
+
 app.get("/data", async (req, res) => {
   const data = await User.findAll();
   console.log(data);
@@ -50,7 +64,7 @@ app.post("/auth", async (req, res) => {
 
   if (user && user.password === password) {
     req.session.userId = user.userId;
-    res.json({ success: true });
+    res.json({ success: true, userId: req.session.userId });
   } else {
     res.json({ success: false });
   }

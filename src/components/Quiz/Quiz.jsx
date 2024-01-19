@@ -3,6 +3,7 @@ import "./Quiz.css";
 import { data } from "../../../scripts/quizdata";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import StopWatch from "./Stopwatch";
+import axios from "axios";
 import QuizResults from "../../../pages/Quizresults";
 
 export default function Quiz({ userScore }) {
@@ -16,13 +17,13 @@ export default function Quiz({ userScore }) {
   // const doesthiswork = useOutletContext();
   // console.log(doesthiswork);
 
-  const { ContextScore } = useOutletContext();
+  const { ContextScore, Timer } = useOutletContext();
 
   const [score, setScore] = ContextScore;
 
   const navigate = useNavigate();
 
-  function GoToResultsPage() {
+  function goToResultsPage() {
     navigate("/results");
   }
 
@@ -32,11 +33,17 @@ export default function Quiz({ userScore }) {
     }
   }
   //save time, route to next page and stop time
-  function handleFinishQuiz() {
+  async function handleFinishQuiz() {
     if (index === data.length - 1) {
       if (!timeStopped) {
-        GoToResultsPage();
-        setTimeStopped(true);
+        //axios req for scores timer and userid
+
+        const res = await axios.post("/scoreData", {
+          scores: score,
+          timer: Timer[0],
+        });
+        goToResultsPage();
+        setTimeStarted(false);
       }
     }
   }

@@ -19,7 +19,11 @@ Score.init(
       type: DataTypes.STRING,
     },
     timer: {
+      type: DataTypes.FLOAT,
+    },
+    userId: {
       type: DataTypes.INTEGER,
+      allowNull: false,
     },
   },
   {
