@@ -39,7 +39,7 @@ export default function LoginPage() {
       {isHome && (
         <>
           <Container fluid>
-            <div class="mx-auto">Please Log Into Your Account</div>
+            <div className="mx-auto">Please Log Into Your Account</div>
             <Form>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address </Form.Label>

@@ -11,7 +11,7 @@ function LeaderBoardModal({ closeModal, data }) {
   };
 
   const DataFromSQL = async () => {
-    const res = await fetch("/leaderboarddata", {
+    const res = await fetch("/data", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -22,8 +22,6 @@ function LeaderBoardModal({ closeModal, data }) {
     console.log(response);
     setLeaderboardData(response);
   };
-
-  console.log(data);
 
   return (
     <div className="modalBackground">
@@ -43,9 +41,12 @@ function LeaderBoardModal({ closeModal, data }) {
         </div>
         <div className="body">
           {data.map((player) => {
+            // console.log(player);
+            console.log(player.scores[0].timer);
             return (
               <div key={player.userId}>
-                {player.fname} {player.lname}
+                {player.fname} {player.lname} {player.scores[0].scores}{" "}
+                {player.scores[0].timer}
               </div>
             );
           })}

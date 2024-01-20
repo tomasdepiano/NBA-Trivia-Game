@@ -2,11 +2,10 @@ import express from "express";
 import session from "express-session";
 import morgan from "morgan";
 import ViteExpress from "vite-express";
-import User from "./models/User.model.js";
-import Score from "./models/Score.model.js";
+import { User } from "./models/index.js";
+import { Score } from "./models/index.js";
 import { db } from "./config/db.js";
 import { Sequelize } from "sequelize";
-const sequelize = new Sequelize("postgresql:///tables");
 
 const app = express();
 const port = "5444";
@@ -55,23 +54,9 @@ app.post("/scoreData", async (req, res) => {
 });
 
 app.get("/data", async (req, res) => {
-  // const data = await Score.findAll({
-  //   include: "userId",
-  // });
-  const data = await sequelize.query(
-    "SELECT scores.scores, users.fname, users.lname, scores.timer FROM scores JOIN users ON scores.userId = users.id",
-    {
-      type: Sequelize.QueryTypes.SELECT,
-    }
-  );
-
-  console.log(data);
-  // console.log(data);
-  // res.json(data);
-});
-
-app.get("/leaderboarddata", async (req, res) => {
-  const data = await Score.findAll();
+  const data = await User.findAll({
+    include: Score,
+  });
   console.log(data);
   res.json(data);
 });
