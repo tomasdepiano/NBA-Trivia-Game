@@ -1,27 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Modal.css";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-function LeaderBoardModal({ closeModal, data }) {
-  const [leaderboardData, setLeaderboardData] = useState([]);
+function LeaderBoardModal({ closeModal }) {
+  const [topScores, setTopScores] = useState([]);
   const navigate = useNavigate();
 
   const handleNewGame = () => {
     navigate("/new-game");
   };
 
-  const DataFromSQL = async () => {
-    const res = await fetch("/data", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    const response = await res.json();
-    console.log(response);
-    setLeaderboardData(response);
+  const Top5 = async () => {
+    const res = await axios.get("/top5");
+    setTopScores(res.data.topScores);
+    // console.log(res);
   };
+  useEffect(() => {
+    Top5();
+  }, []);
 
   return (
     <div className="modalBackground">
@@ -38,18 +35,21 @@ function LeaderBoardModal({ closeModal, data }) {
         </div>
         <div className="title">
           <h1>Here are the current Top 5 Players and Scores!</h1>
+          <div>Player Name</div>
+          <div>Scores</div>
+          <div>Timer</div>
         </div>
         <div className="body">
-          {data.map((player) => {
-            // console.log(player);
-            console.log(player.scores[0].timer);
-            return (
-              <div key={player.userId}>
-                {player.fname} {player.lname} {player.scores[0].scores}{" "}
-                {player.scores[0].timer}
-              </div>
-            );
-          })}
+          {!!topScores.length &&
+            topScores.map((score) => {
+              console.log(topScores);
+              return (
+                <div key={score.scoreId}>
+                  {score.user.fname} {score.user.lname} {score.scores}{" "}
+                  {score.timer}
+                </div>
+              );
+            })}
         </div>
         <div className="footer">
           <button onClick={handleNewGame}>Play New Game</button>

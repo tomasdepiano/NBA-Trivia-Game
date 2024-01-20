@@ -4,8 +4,6 @@ import morgan from "morgan";
 import ViteExpress from "vite-express";
 import { User } from "./models/index.js";
 import { Score } from "./models/index.js";
-import { db } from "./config/db.js";
-import { Sequelize } from "sequelize";
 
 const app = express();
 const port = "5444";
@@ -39,11 +37,26 @@ app.post("/createAccount", async (req, res) => {
   }
 });
 
+app.get("/top5", async (req, res) => {
+  const topScores = await Score.findAll({
+    include: User,
+    order: [
+      ["scores", "DESC"],
+      ["timer", "ASC"],
+    ],
+    limit: 5,
+  });
+  console.log(topScores);
+  res.json({ success: true, topScores });
+});
+
 app.post("/scoreData", async (req, res) => {
   const { scores, timer } = req.body;
   console.log(req.session.userId);
   console.log(req.body);
   console.log(typeof timer);
+
+  //get all scores from database and create new score, loop to check which score is the highest
 
   await Score.create({
     scores: scores,
@@ -57,7 +70,6 @@ app.get("/data", async (req, res) => {
   const data = await User.findAll({
     include: Score,
   });
-  console.log(data);
   res.json(data);
 });
 

@@ -42,6 +42,7 @@ export default function Quiz({ userScore }) {
           scores: score,
           timer: Timer[0],
         });
+
         goToResultsPage();
         setTimeStarted(false);
       }

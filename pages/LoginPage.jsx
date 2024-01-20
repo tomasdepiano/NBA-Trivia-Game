@@ -92,7 +92,6 @@ export default function LoginPage() {
         context={{
           ContextScore: [score, setScore],
           Timer: [secondsPassed, setSecondsPassed],
-          // UserId: [userId, setUserId],
         }}
       />
     </>
