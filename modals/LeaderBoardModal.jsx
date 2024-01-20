@@ -1,14 +1,29 @@
 import React, { useState } from "react";
 import "./Modal.css";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
 function LeaderBoardModal({ closeModal, data }) {
+  const [leaderboardData, setLeaderboardData] = useState([]);
   const navigate = useNavigate();
 
   const handleNewGame = () => {
     navigate("/new-game");
   };
+
+  const DataFromSQL = async () => {
+    const res = await fetch("/leaderboarddata", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const response = await res.json();
+    console.log(response);
+    setLeaderboardData(response);
+  };
+
+  console.log(data);
 
   return (
     <div className="modalBackground">

@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import Modal from "../src/components/CreateAccountModal.jsx";
+import Modal from "../modals/CreateAccountModal.jsx";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";

@@ -1,6 +1,7 @@
 import Quiz from "../src/components/Quiz/quiz";
 import { useOutletContext } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import Confetti from "react-confetti";
 
 export default function QuizResults() {
   const navigate = useNavigate();
@@ -19,6 +20,7 @@ export default function QuizResults() {
         You scored {score} out of 10 in {secondsPassed} seconds.
       </h2>
       <button onClick={GoBackHome}>Go back to Home Screen</button>
+      <Confetti />
     </>
   );
 }

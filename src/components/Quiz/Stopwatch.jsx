@@ -11,8 +11,6 @@ export default function Stopwatch({ timeStarted, timeStopped }) {
 
   const [secondsPassed, setSecondsPassed] = Timer;
 
-  console.log(timeStopped);
-
   function handleStart() {
     setStartTime(Date.now());
 

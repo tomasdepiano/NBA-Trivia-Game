@@ -1,5 +1,5 @@
 import { useState } from "react";
-import LeaderBoardModal from "../src/components/LeaderBoardModal";
+import LeaderBoardModal from "../modals/LeaderBoardModal";
 import { useNavigate } from "react-router-dom";
 
 export default function WelcomePage() {
