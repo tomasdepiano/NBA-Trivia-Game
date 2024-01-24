@@ -14,7 +14,6 @@ function LeaderBoardModal({ closeModal }) {
   const Top5 = async () => {
     const res = await axios.get("/top5");
     setTopScores(res.data.topScores);
-    // console.log(res);
   };
   useEffect(() => {
     Top5();

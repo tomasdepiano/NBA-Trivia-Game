@@ -56,8 +56,6 @@ app.post("/scoreData", async (req, res) => {
   console.log(req.body);
   console.log(typeof timer);
 
-  //get all scores from database and create new score, loop to check which score is the highest
-
   await Score.create({
     scores: scores,
     timer: timer,
@@ -92,6 +90,32 @@ app.post("/logout", (req, res) => {
     req.session.destroy();
     res.json({ success: true });
   }
+});
+
+app.get("/welcome", async (req, res) => {
+  const userId = req.session.userId;
+  const user = await User.findByPk(userId);
+  console.log(user);
+  console.log(userId);
+
+  res.json({
+    fname: user.fname,
+    lname: user.lname,
+    email: user.email,
+  });
+});
+
+app.put("/email", async (req, res) => {
+  const { email } = req.body;
+  const userId = req.session.userId;
+  const user = await User.update(
+    { email: email },
+    {
+      where: {
+        userId: userId,
+      },
+    }
+  );
 });
 
 ViteExpress.listen(app, port, () =>
