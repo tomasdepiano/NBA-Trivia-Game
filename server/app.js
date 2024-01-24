@@ -92,16 +92,16 @@ app.post("/logout", (req, res) => {
   }
 });
 
-app.get("/welcome", async (req, res) => {
+app.get("/api/welcome", async (req, res) => {
   const userId = req.session.userId;
   const user = await User.findByPk(userId);
   console.log(user);
   console.log(userId);
 
   res.json({
-    fname: user.fname,
-    lname: user.lname,
-    email: user.email,
+    fname: user?.fname,
+    lname: user?.lname,
+    email: user?.email,
   });
 });
 

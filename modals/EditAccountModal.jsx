@@ -2,7 +2,15 @@ import React, { useState } from "react";
 import "./Modal.css";
 import axios from "axios";
 
-function EditModal({ closeModal }) {
+function EditModal({ closeModal, email }) {
+  const [newEmail, setNewEmail] = useState("");
+
+  function changeEmail() {
+    axios.put("/email", {
+      email: newEmail,
+    });
+  }
+
   return (
     <div className="modalBackground">
       <div className="modalContainer">
@@ -21,13 +29,16 @@ function EditModal({ closeModal }) {
         </div>
         <form>
           <div className="body">
-            <div>
-              Current Email:
-              <input type="text" />
-            </div>
+            <p>Current Email: {email}</p>
             <div>
               New Email:
-              <input type="text" />
+              <input
+                onChange={(e) => {
+                  setNewEmail(e.target.value);
+                }}
+                type="text"
+                value={newEmail}
+              />
             </div>
           </div>
 
@@ -35,6 +46,9 @@ function EditModal({ closeModal }) {
             <button
               onClick={(e) => {
                 e.preventDefault();
+                changeEmail();
+                window.alert("Email has been changed");
+                closeModal(false);
               }}
             >
               Change Email Address

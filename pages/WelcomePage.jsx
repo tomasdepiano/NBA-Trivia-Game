@@ -15,7 +15,7 @@ export default function WelcomePage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("/welcome").then((res) => {
+    axios.get("/api/welcome").then((res) => {
       setUser(res.data);
     });
   }, []);
@@ -63,7 +63,9 @@ export default function WelcomePage() {
       >
         Edit Your Account
       </button>
-      {editOpenModal && <EditModal closeModal={setEditOpenModal} />}
+      {editOpenModal && (
+        <EditModal closeModal={setEditOpenModal} email={user.email} />
+      )}
       <button
         className="openModalBtn"
         onClick={() => {
