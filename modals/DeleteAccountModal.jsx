@@ -1,8 +1,17 @@
 import React, { useState } from "react";
 import "./Modal.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function DeleteModal({ closeModal }) {
+  const navigate = useNavigate();
+  function deleteUser() {
+    axios.delete("/deleteUser").then(() => {
+      alert("Your account has been deleted.");
+      navigate("/");
+    });
+  }
+
   return (
     <div className="modalBackground">
       <div className="modalContainer">
@@ -24,6 +33,8 @@ function DeleteModal({ closeModal }) {
             <button
               onClick={(e) => {
                 e.preventDefault();
+                deleteUser();
+                closeModal(false);
               }}
             >
               Yes

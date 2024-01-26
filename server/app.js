@@ -118,6 +118,18 @@ app.put("/email", async (req, res) => {
   );
 });
 
+app.delete("/deleteUser", async (req, res) => {
+  const userId = req.session.userId;
+
+  const user = await User.destroy({
+    where: {
+      userId: userId,
+    },
+  });
+  req.session.destroy();
+  res.json({ success: true });
+});
+
 ViteExpress.listen(app, port, () =>
   console.log(`Server is listening on http://localhost:${port}`)
 );

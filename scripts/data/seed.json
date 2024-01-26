@@ -3,14 +3,12 @@
     "fname": "Tomas",
     "lname": "De Piano",
     "email": "test@test.com",
-    "password": "test",
-    "highScore": "0"
+    "password": "test"
   },
   {
     "fname": "Noemi",
     "lname": "De Piano",
     "email": "test2@test.com",
-    "password": "test",
-    "highScore": "0"
+    "password": "test"
   }
 ]
