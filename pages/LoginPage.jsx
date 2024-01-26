@@ -3,10 +3,6 @@ import Modal from "../modals/CreateAccountModal.jsx";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "bootstrap/dist/css/bootstrap.css";
-import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 
 export default function LoginPage() {
   const path = window.location.pathname;
@@ -38,54 +34,37 @@ export default function LoginPage() {
     <>
       {isHome && (
         <>
-          <Container fluid>
-            <div className="mx-auto">Please Log Into Your Account</div>
-            <Form>
-              <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Email address </Form.Label>
-                <input
-                  type="text"
-                  name="email"
-                  onChange={(e) => setEmail(e.target.value)}
-                  value={email}
-                />
-                <Form.Text>
-                  We'll never share your email with anyone else.
-                </Form.Text>
-              </Form.Group>
+          <div>Please Log Into Your Account</div>
+          <form>
+            <label>Email address </label>
+            <input
+              type="text"
+              name="email"
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+            />
 
-              <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <input
-                  type="password"
-                  name="password"
-                  onChange={(e) => setPassword(e.target.value)}
-                  value={password}
-                />
-                <Form.Text>
-                  We'll never share your password with anyone else.
-                </Form.Text>
-              </Form.Group>
+            <label>Password</label>
+            <input
+              type="password"
+              name="password"
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+            />
 
-              <Button
-                variant="primary"
-                type="submit"
-                onClick={(e) => handleLogin(e)}
-              >
-                Submit
-              </Button>
-            </Form>
-            <Button
-              variant="primary"
-              className="openModalBtn"
-              onClick={() => {
-                setOpenModal(true);
-              }}
-            >
-              Create an Account
-            </Button>
-            {openModal && <Modal closeModal={setOpenModal} />}
-          </Container>
+            <button type="submit" onClick={(e) => handleLogin(e)}>
+              Submit
+            </button>
+          </form>
+          <button
+            className="openModalBtn"
+            onClick={() => {
+              setOpenModal(true);
+            }}
+          >
+            Create an Account
+          </button>
+          {openModal && <Modal closeModal={setOpenModal} />}
         </>
       )}
       <Outlet
