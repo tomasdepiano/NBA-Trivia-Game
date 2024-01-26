@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import Modal from "../modals/CreateAccountModal.jsx";
+import Modal from "../src/components/modals/CreateAccountModal.jsx";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -34,10 +34,13 @@ export default function LoginPage() {
     <>
       {isHome && (
         <>
-          <div>Please Log Into Your Account</div>
+          <h1 className="text-3xl font-bold underline">
+            Please Log Into Your Account
+          </h1>
           <form>
-            <label>Email address </label>
+            <label>Email address</label>
             <input
+              className="input input-bordered w-full max-w-xs"
               type="text"
               name="email"
               onChange={(e) => setEmail(e.target.value)}

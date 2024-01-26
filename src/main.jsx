@@ -8,10 +8,10 @@ import React from "react";
 import axios from "axios";
 import ReactDOM from "react-dom/client";
 import WelcomePage from "../pages/WelcomePage.jsx";
-import App from "./app.jsx";
-
+import App from "./App.jsx";
 import Quiz from "./components/Quiz/quiz.jsx";
 import QuizResults from "../pages/Quizresults.jsx";
+import "./index.css";
 
 const router = createBrowserRouter(
   createRoutesFromElements(

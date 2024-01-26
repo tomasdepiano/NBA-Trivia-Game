@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import LeaderBoardModal from "../modals/LeaderBoardModal";
+import LeaderBoardModal from "../src/components/modals/LeaderBoardModal";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import EditModal from "../modals/EditAccountModal";
-import DeleteModal from "../modals/DeleteAccountModal";
+import EditModal from "../src/components/modals/EditAccountModal";
+import DeleteModal from "../src/components/modals/DeleteAccountModal";
 
 export default function WelcomePage() {
   const [openModal, setOpenModal] = useState(false);
