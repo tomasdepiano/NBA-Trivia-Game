@@ -4,6 +4,7 @@ import morgan from "morgan";
 import ViteExpress from "vite-express";
 import { User } from "./models/index.js";
 import { Score } from "./models/index.js";
+import { Sequelize } from "sequelize";
 
 const app = express();
 const port = "5444";
@@ -39,7 +40,10 @@ app.post("/createAccount", async (req, res) => {
 
 app.get("/top5", async (req, res) => {
   const topScores = await Score.findAll({
-    include: User,
+    include: {
+      model: User,
+      required: true,
+    },
     order: [
       ["scores", "DESC"],
       ["timer", "ASC"],
