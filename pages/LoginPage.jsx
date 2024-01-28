@@ -31,15 +31,14 @@ export default function LoginPage() {
   };
 
   return (
-    <>
+    <main className="bg-blue-400 flex h-screen justify-center">
       {isHome && (
-        <>
-          <h1 className="text-3xl font-bold underline">
-            Please Log Into Your Account
-          </h1>
+        <div className="flex flex-col items-center  justify-center space-y-4">
+          <h1 className="font-bold">Please Log Into Your Account</h1>
           <form>
-            <label>Email address</label>
+            <label className="flex justify-center">Email address</label>
             <input
+              placeholder="Type here"
               className="input input-bordered w-full max-w-xs"
               type="text"
               name="email"
@@ -47,20 +46,26 @@ export default function LoginPage() {
               value={email}
             />
 
-            <label>Password</label>
+            <label className="flex justify-center">Password</label>
             <input
+              placeholder="Type here"
+              className="input input-bordered w-full max-w-xs"
               type="password"
               name="password"
               onChange={(e) => setPassword(e.target.value)}
               value={password}
             />
 
-            <button type="submit" onClick={(e) => handleLogin(e)}>
+            <button
+              className="btn glass"
+              type="submit"
+              onClick={(e) => handleLogin(e)}
+            >
               Submit
             </button>
           </form>
           <button
-            className="openModalBtn"
+            className="btn glass"
             onClick={() => {
               setOpenModal(true);
             }}
@@ -68,7 +73,7 @@ export default function LoginPage() {
             Create an Account
           </button>
           {openModal && <Modal closeModal={setOpenModal} />}
-        </>
+        </div>
       )}
       <Outlet
         context={{
@@ -76,6 +81,6 @@ export default function LoginPage() {
           Timer: [secondsPassed, setSecondsPassed],
         }}
       />
-    </>
+    </main>
   );
 }

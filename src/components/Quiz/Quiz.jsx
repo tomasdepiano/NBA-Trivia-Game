@@ -14,9 +14,6 @@ export default function Quiz({ userScore }) {
   const [timeStarted, setTimeStarted] = useState(false);
   const [timeStopped, setTimeStopped] = useState(false);
 
-  // const doesthiswork = useOutletContext();
-  // console.log(doesthiswork);
-
   const { ContextScore, Timer } = useOutletContext();
 
   const [score, setScore] = ContextScore;
@@ -148,6 +145,7 @@ export default function Quiz({ userScore }) {
             </li>
           </ul>
           <button
+            className="bg-yellow-300 hover:bg-yellow-300 ..."
             onClick={(e) => {
               if (index === data.length - 1) {
                 return handleFinishQuiz();

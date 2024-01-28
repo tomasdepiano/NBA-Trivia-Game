@@ -41,11 +41,13 @@ export default function WelcomePage() {
   };
 
   return (
-    <>
-      <div>Welcome back, {user ? user.fname : "User"}</div>
+    <div className="flex justify-center flex-col items-center space-x-4 space-y-4 ">
+      <div className="font-bold">
+        Welcome back, {user ? user.fname : "User"}
+      </div>
 
       <button
-        className="openModalBtn"
+        className="btn btn-glass "
         onClick={() => {
           setOpenModal(true);
           DataFromSQL();
@@ -54,9 +56,11 @@ export default function WelcomePage() {
         Click Here to see Current Leaderboard!
       </button>
       {openModal && <LeaderBoardModal closeModal={setOpenModal} data={data} />}
-      <button onClick={handleNewGame}>Play New Game</button>
+      <button className="btn btn-glass" onClick={handleNewGame}>
+        Play New Game
+      </button>
       <button
-        className="openModalBtn"
+        className="btn btn-glass"
         onClick={() => {
           setEditOpenModal(true);
         }}
@@ -67,7 +71,7 @@ export default function WelcomePage() {
         <EditModal closeModal={setEditOpenModal} email={user.email} />
       )}
       <button
-        className="openModalBtn"
+        className="btn btn-glass"
         onClick={() => {
           setDeleteOpenModal(true);
         }}
@@ -75,7 +79,9 @@ export default function WelcomePage() {
         Delete Your Account
       </button>
       {deleteOpenModal && <DeleteModal closeModal={setDeleteOpenModal} />}
-      <button onClick={handleLogout}>Log Out</button>
-    </>
+      <button className="btn btn-glass" onClick={handleLogout}>
+        Log Out
+      </button>
+    </div>
   );
 }
