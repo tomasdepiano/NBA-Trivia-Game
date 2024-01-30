@@ -34,7 +34,7 @@ export default function LoginPage() {
     <main className="bg-blue-400 flex h-screen justify-center">
       {isHome && (
         <div className="flex flex-col items-center  justify-center space-y-4">
-          <h1 className="font-bold">Please Log Into Your Account</h1>
+          <h1 className="font-bold underline">Please Log Into Your Account</h1>
           <form>
             <label className="flex justify-center">Email address</label>
             <input
@@ -57,7 +57,7 @@ export default function LoginPage() {
             />
 
             <button
-              className="btn glass"
+              className="btn btn-glass"
               type="submit"
               onClick={(e) => handleLogin(e)}
             >
@@ -65,7 +65,7 @@ export default function LoginPage() {
             </button>
           </form>
           <button
-            className="btn glass"
+            className="btn btn-glass"
             onClick={() => {
               setOpenModal(true);
             }}

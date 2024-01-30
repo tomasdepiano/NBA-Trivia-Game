@@ -25,7 +25,7 @@ function EditModal({ closeModal, email }) {
           </button>
         </div>
         <div className="title">
-          <h1>Edit your Account</h1>
+          <h1 className="font-bold">Edit your Account</h1>
         </div>
         <form>
           <div className="body">
@@ -33,6 +33,8 @@ function EditModal({ closeModal, email }) {
             <div>
               New Email:
               <input
+                placeholder="Type here"
+                className="input input-bordered w-full max-w-xs"
                 onChange={(e) => {
                   setNewEmail(e.target.value);
                 }}

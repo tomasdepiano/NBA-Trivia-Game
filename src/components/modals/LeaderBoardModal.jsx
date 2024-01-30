@@ -33,20 +33,25 @@ function LeaderBoardModal({ closeModal }) {
             X{" "}
           </button>
         </div>
-        <div className="title">
-          <h1>Here are the current Top 5 Players and Scores!</h1>
-          <div>Player Name</div>
-          <div>Scores</div>
-          <div>Timer</div>
+        <div>
+          <h1 className="flex justify-center font-bold underline">
+            Here are the current Top 5 Players and Scores!
+          </h1>
         </div>
-        <div className="body">
+        <div className="grid grid-cols-3 gap-10">
+          <div className="font-bold underline">Player Name</div>
+          <div className="font-bold underline">Scores</div>
+          <div className="font-bold underline">Timer</div>
+        </div>
+        <div className="grid">
           {!!topScores.length &&
             topScores.map((score) => {
               console.log(topScores);
               return (
                 <div key={score.scoreId}>
-                  {score.user.fname} {score.user.lname} {score.scores}{" "}
-                  {score.timer}
+                  {score.user.fname} {score.user.lname}
+                  <div className="flex justify-center">{score.scores}</div>{" "}
+                  <div className="flex justify-end">{score.timer}</div>
                 </div>
               );
             })}

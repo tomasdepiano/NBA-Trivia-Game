@@ -36,13 +36,15 @@ function Modal({ closeModal }) {
           </button>
         </div>
         <div className="title">
-          <h1>Lets create a new account!</h1>
+          <h1 className="font-bold">Lets create a new account!</h1>
         </div>
         <form onSubmit={clickCreateAccountButton}>
           <div className="body">
             <div>
               First Name:
               <input
+                placeholder="Type here"
+                className="input input-bordered w-full max-w-xs"
                 type="text"
                 name="fname"
                 onChange={(e) => setFname(e.target.value)}
@@ -52,6 +54,8 @@ function Modal({ closeModal }) {
             <div>
               Last Name:
               <input
+                placeholder="Type here"
+                className="input input-bordered w-full max-w-xs"
                 type="text"
                 name="lname"
                 onChange={(e) => setLname(e.target.value)}
@@ -61,6 +65,8 @@ function Modal({ closeModal }) {
             <div>
               Email:
               <input
+                placeholder="Type here"
+                className="input input-bordered w-full max-w-xs"
                 type="email"
                 name="email"
                 onChange={(e) => setEmail(e.target.value)}
@@ -72,6 +78,8 @@ function Modal({ closeModal }) {
             <div>
               Password:
               <input
+                placeholder="Type here"
+                className="input input-bordered w-full max-w-xs"
                 type="password"
                 name="password"
                 onChange={(e) => setPassword(e.target.value)}
