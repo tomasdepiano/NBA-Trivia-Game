@@ -34,48 +34,52 @@ export default function LoginPage() {
   return (
     <main className="bg-blue-400 flex h-screen justify-center">
       {isHome && (
-        <div className="flex flex-col items-center  justify-center space-y-4 w-full">
-          <h1 className="font-bold underline">Please Log Into Your Account</h1>
-          <form className="flex flex-col items-center w-full">
-            <label>Email address</label>
-            <input
-              placeholder="Type here"
-              className="input input-bordered w-full max-w-xs"
-              type="text"
-              name="email"
-              onChange={(e) => setEmail(e.target.value)}
-              value={email}
-            />
+        <div className=" bg-white flex justify-center p-16 m-48 rounded-lg">
+          <div className="flex flex-col items-center  justify-center space-y-4 w-full">
+            <h1 className="font-bold">Please Log Into Your Account</h1>
+            <form className="flex flex-col items-center w-full">
+              <label>Email address</label>
+              <input
+                placeholder="Type here"
+                className="input input-bordered w-full max-w-xs"
+                type="text"
+                name="email"
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+              />
 
-            <label>Password</label>
-            <input
-              placeholder="Type here"
-              className="input input-bordered w-full max-w-xs"
-              type="password"
-              name="password"
-              onChange={(e) => setPassword(e.target.value)}
-              value={password}
-            />
+              <label>Password</label>
+              <input
+                placeholder="Type here"
+                className="input input-bordered w-full max-w-xs"
+                type="password"
+                name="password"
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+              />
 
+              <button
+                className="btn btn-glass mx-auto"
+                type="submit"
+                onClick={(e) => handleLogin(e)}
+              >
+                Submit
+              </button>
+            </form>
             <button
-              className="btn btn-glass mx-auto"
-              type="submit"
-              onClick={(e) => handleLogin(e)}
+              className="btn btn-glass"
+              onClick={() => {
+                setOpenModal(true);
+              }}
             >
-              Submit
+              Create an Account
             </button>
-          </form>
-          <button
-            className="btn btn-glass"
-            onClick={() => {
-              setOpenModal(true);
-            }}
-          >
-            Create an Account
-          </button>
+          </div>
+
           {openModal && <Modal closeModal={setOpenModal} />}
         </div>
       )}
+
       <Outlet
         context={{
           ContextScore: [score, setScore],

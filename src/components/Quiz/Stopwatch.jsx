@@ -44,8 +44,6 @@ export default function Stopwatch({ timeStarted, timeStopped }) {
   return (
     <>
       <h1>Time passed: {secondsPassed.toFixed(3)}</h1>
-      {/* <button onClick={handleStart}>Start</button>
-      <button onClick={handleStop}>Stop</button> */}
     </>
   );
 }

@@ -38,20 +38,21 @@ function LeaderBoardModal({ closeModal }) {
             Here are the current Top 5 Players and Scores!
           </h1>
         </div>
-        <div className="grid grid-cols-3 gap-10">
+        <div className="grid grid-cols-3 grid-rows-6 gap-10">
           <div className="font-bold underline">Player Name</div>
           <div className="font-bold underline">Scores</div>
           <div className="font-bold underline">Timer</div>
-        </div>
-        <div>
+
           {!!topScores.length &&
             topScores.map((score) => {
               return (
-                <div key={score.scoreId}>
-                  {score.user.fname} {score.user.lname}
-                  <div className="flex justify-center">{score.scores}</div>{" "}
-                  <div className="flex justify-end">{score.timer}</div>
-                </div>
+                <>
+                  <div key={score.scoreId}>
+                    {score.user.fname} {score.user.lname}
+                  </div>
+                  <div className="flex text-center">{score.scores}</div>{" "}
+                  <div className="flex text-end">{score.timer}</div>
+                </>
               );
             })}
         </div>
