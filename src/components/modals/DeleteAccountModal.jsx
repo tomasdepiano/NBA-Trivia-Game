@@ -31,6 +31,7 @@ function DeleteModal({ closeModal }) {
         <form>
           <div className="footer">
             <button
+              className="flex justify-center"
               onClick={(e) => {
                 e.preventDefault();
                 deleteUser();
@@ -40,6 +41,7 @@ function DeleteModal({ closeModal }) {
               Yes
             </button>
             <button
+              className="flex justify-center"
               onClick={() => {
                 closeModal(false);
               }}

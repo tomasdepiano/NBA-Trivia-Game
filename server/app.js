@@ -4,7 +4,6 @@ import morgan from "morgan";
 import ViteExpress from "vite-express";
 import { User } from "./models/index.js";
 import { Score } from "./models/index.js";
-import { Sequelize } from "sequelize";
 
 const app = express();
 const port = "5444";
@@ -19,7 +18,7 @@ app.use(
 
 app.post("/createAccount", async (req, res) => {
   const { fname, lname, email, password } = req.body;
-  console.log(req.body);
+
   const user = await User.findOne({ where: { email } });
 
   if (user) {
@@ -50,15 +49,12 @@ app.get("/top5", async (req, res) => {
     ],
     limit: 5,
   });
-  console.log(topScores);
+
   res.json({ success: true, topScores });
 });
 
 app.post("/scoreData", async (req, res) => {
   const { scores, timer } = req.body;
-  console.log(req.session.userId);
-  console.log(req.body);
-  console.log(typeof timer);
 
   await Score.create({
     scores: scores,
@@ -99,8 +95,6 @@ app.post("/logout", (req, res) => {
 app.get("/api/welcome", async (req, res) => {
   const userId = req.session.userId;
   const user = await User.findByPk(userId);
-  console.log(user);
-  console.log(userId);
 
   res.json({
     fname: user?.fname,

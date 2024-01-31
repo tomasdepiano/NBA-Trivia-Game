@@ -14,6 +14,7 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [score, setScore] = useState(0);
   const [secondsPassed, setSecondsPassed] = useState(0);
+  const [showModal, setShowModal] = useState("false");
 
   const navigate = useNavigate();
 
@@ -33,10 +34,10 @@ export default function LoginPage() {
   return (
     <main className="bg-blue-400 flex h-screen justify-center">
       {isHome && (
-        <div className="flex flex-col items-center  justify-center space-y-4">
+        <div className="flex flex-col items-center  justify-center space-y-4 w-full">
           <h1 className="font-bold underline">Please Log Into Your Account</h1>
-          <form>
-            <label className="flex justify-center">Email address</label>
+          <form className="flex flex-col items-center w-full">
+            <label>Email address</label>
             <input
               placeholder="Type here"
               className="input input-bordered w-full max-w-xs"
@@ -46,7 +47,7 @@ export default function LoginPage() {
               value={email}
             />
 
-            <label className="flex justify-center">Password</label>
+            <label>Password</label>
             <input
               placeholder="Type here"
               className="input input-bordered w-full max-w-xs"
@@ -57,7 +58,7 @@ export default function LoginPage() {
             />
 
             <button
-              className="btn btn-glass"
+              className="btn btn-glass mx-auto"
               type="submit"
               onClick={(e) => handleLogin(e)}
             >
@@ -79,6 +80,7 @@ export default function LoginPage() {
         context={{
           ContextScore: [score, setScore],
           Timer: [secondsPassed, setSecondsPassed],
+          ShowModal: [showModal, setShowModal],
         }}
       />
     </main>

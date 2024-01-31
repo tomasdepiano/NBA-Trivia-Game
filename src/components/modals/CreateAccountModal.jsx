@@ -89,8 +89,11 @@ function Modal({ closeModal }) {
           </div>
 
           <div className="footer">
-            <button type="submit">Create Account</button>
+            <button className="flex justify-center" type="submit">
+              Create Account
+            </button>
             <button
+              className="flex justify-center"
               onClick={() => {
                 closeModal(false);
               }}

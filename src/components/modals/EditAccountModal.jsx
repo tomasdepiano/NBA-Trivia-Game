@@ -46,6 +46,7 @@ function EditModal({ closeModal, email }) {
 
           <div className="footer">
             <button
+              className="flex justify-center"
               onClick={(e) => {
                 e.preventDefault();
                 changeEmail();
@@ -56,6 +57,7 @@ function EditModal({ closeModal, email }) {
               Change Email Address
             </button>
             <button
+              className="flex justify-center"
               onClick={() => {
                 closeModal(false);
               }}

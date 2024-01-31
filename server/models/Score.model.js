@@ -16,7 +16,7 @@ Score.init(
       autoIncrement: true,
     },
     scores: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
     },
     timer: {
       type: DataTypes.FLOAT,

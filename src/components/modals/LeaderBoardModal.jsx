@@ -14,7 +14,7 @@ function LeaderBoardModal({ closeModal }) {
   const Top5 = async () => {
     const res = await axios.get("/top5");
     setTopScores(res.data.topScores);
-    // console.log(res);
+    console.log(res.data.topScores);
   };
   useEffect(() => {
     Top5();
@@ -43,10 +43,9 @@ function LeaderBoardModal({ closeModal }) {
           <div className="font-bold underline">Scores</div>
           <div className="font-bold underline">Timer</div>
         </div>
-        <div className="grid">
+        <div>
           {!!topScores.length &&
             topScores.map((score) => {
-              console.log(topScores);
               return (
                 <div key={score.scoreId}>
                   {score.user.fname} {score.user.lname}
@@ -57,8 +56,11 @@ function LeaderBoardModal({ closeModal }) {
             })}
         </div>
         <div className="footer">
-          <button onClick={handleNewGame}>Play New Game</button>
+          <button className="flex justify-center" onClick={handleNewGame}>
+            Play New Game
+          </button>
           <button
+            className="flex justify-center"
             onClick={() => {
               closeModal(false);
             }}

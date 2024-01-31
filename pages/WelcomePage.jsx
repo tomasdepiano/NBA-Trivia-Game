@@ -36,7 +36,6 @@ export default function WelcomePage() {
       },
     });
     const response = await res.json();
-    console.log(response);
     setData(response);
   };
 
