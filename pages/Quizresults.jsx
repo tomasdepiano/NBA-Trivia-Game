@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Confetti from "react-confetti";
 import LeaderBoardModal from "../src/components/modals/LeaderBoardModal";
 
-export default function QuizResults() {
+export default function QuizResults({ closeModal }) {
   const navigate = useNavigate();
 
   function GoBackHome() {
@@ -27,7 +27,13 @@ export default function QuizResults() {
         View the current LeaderBoard
       </button>
       <Confetti />
-      {showModal && <LeaderBoardModal closeModal={() => setShowModal(false)} />}
+      {showModal && (
+        <LeaderBoardModal
+          closeModal={() => {
+            setShowModal(false);
+          }}
+        />
+      )}
     </div>
   );
 }
