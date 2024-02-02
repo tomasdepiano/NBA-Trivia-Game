@@ -2,7 +2,7 @@
 
 ## Description
 
-This app allows users to play an NBA Trivia Game to put their basketball knowledge to the test. This app allows you to edit your email address, delete your account and view the current leaderboard. Good luck trying to beat my score! 😆
+This app allows users to play an NBA Trivia Game to put their basketball knowledge to the test. 🏀 This app allows you to edit your email address, delete your account and view the current leaderboard. Good luck trying to beat my score! 😆
 
 ## Built With
 
