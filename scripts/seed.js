@@ -37,8 +37,8 @@ const usersInDB = await Promise.all(
     });
 
     const userScore = Score.create({
-      scores: "0",
-      timer: 0.5555,
+      scores: "10",
+      timer: 1,
       userId: newUser.userId,
     });
 

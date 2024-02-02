@@ -1,8 +1,14 @@
-# React + Vite
+# NBA Trivia Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![App Demo]()
 
-Currently, two official plugins are available:
+## Description
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This app allows users to play an NBA Trivia Game to put their basketball knowledge to the test. This app allows you to edit you email address, delete your account and view the current leaderboard. Good luck trying to beat my score! 😆
+
+## Tech Stack
+
+## Future Development
+
+- Add more games to the app so users can play more games
+- Let users change their passwords

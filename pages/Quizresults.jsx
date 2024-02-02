@@ -11,6 +11,11 @@ export default function QuizResults({ closeModal }) {
   function GoBackHome() {
     navigate("/welcome");
   }
+
+  function Logout() {
+    navigate("/");
+  }
+
   const { ContextScore, Timer, ShowModal } = useOutletContext();
 
   const [score, setScore] = ContextScore;
@@ -46,6 +51,9 @@ export default function QuizResults({ closeModal }) {
       </button>
       <button onClick={() => setShowModal(true)} className="btn btn-glass">
         View the current LeaderBoard
+      </button>
+      <button className="btn btn-glass" onClick={() => Logout()}>
+        Log Out
       </button>
       <Confetti />
       {showModal && (
