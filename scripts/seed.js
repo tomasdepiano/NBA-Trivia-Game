@@ -12,17 +12,8 @@ console.log("Seeding database...");
 
 const usersInDB = await Promise.all(
   TomasData.map(async (data) => {
-    const {
-      userId,
-      fname,
-      lname,
-      email,
-      password,
-      scoreId,
-      score,
-      timer,
-      highScore,
-    } = data;
+    const { userId, fname, lname, email, password, scoreId, score, timer } =
+      data;
 
     const newUser = await User.create({
       userId: userId,
@@ -33,7 +24,6 @@ const usersInDB = await Promise.all(
       scoreId: scoreId,
       score: score,
       timer: timer,
-      highScore: highScore,
     });
 
     const userScore = Score.create({
