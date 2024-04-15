@@ -4,9 +4,8 @@ import { data } from "../../../scripts/quizdata";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import StopWatch from "./Stopwatch";
 import axios from "axios";
-import QuizResults from "../../../pages/Quizresults";
 
-export default function Quiz({ userScore }) {
+export function Quiz({ userScore }) {
   let [index, setIndex] = useState(0);
   const [question, setQuestion] = useState(data[index]);
   const [lock, setLock] = useState(false);
