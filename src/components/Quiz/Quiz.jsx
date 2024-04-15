@@ -5,7 +5,7 @@ import { useNavigate, useOutletContext } from "react-router-dom";
 import StopWatch from "./Stopwatch";
 import axios from "axios";
 
-export function Quiz({ userScore }) {
+function Quiz({ userScore }) {
   let [index, setIndex] = useState(0);
   const [question, setQuestion] = useState(data[index]);
   const [lock, setLock] = useState(false);
@@ -174,3 +174,5 @@ export function Quiz({ userScore }) {
     </div>
   );
 }
+
+export default Quiz;

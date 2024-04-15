@@ -9,7 +9,7 @@ import axios from "axios";
 import ReactDOM from "react-dom/client";
 import WelcomePage from "../pages/WelcomePage.jsx";
 import App from "./App.jsx";
-import Quiz from "./components/Quiz/quiz.jsx";
+import Quiz from "./components/Quiz/Quiz.jsx";
 import QuizResults from "../pages/Quizresults.jsx";
 import "./index.css";
 
